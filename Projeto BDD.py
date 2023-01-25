@@ -9,7 +9,7 @@ from base64 import b64encode, b64decode
 
 class projetoFuncionarios:
     def __init__(self):
-        sg.theme('Reddit')
+        #sg.Theme('Reddit')
         # Abrindo banco de dados
         self.criandoBDDsqlite()
 
@@ -48,7 +48,7 @@ class projetoFuncionarios:
             self.key, value = janela_inicial.read()
 
             # If para fechar a janela
-            if self.key == sg.WINDOW_CLOSED or self.key == 'Sair':
+            if self.key == sg.Window.Close or self.key == 'Sair':
                 break
 
             # If para criar um perfil
@@ -57,7 +57,7 @@ class projetoFuncionarios:
                 self.telaAdicionar()
                 janela_inicial.UnHide()
 
-            if self.key != 'Criar Perfil' and self.key != sg.WINDOW_CLOSED and self.key != 'Sair':
+            if self.key != 'Criar Perfil' and self.key != sg.Window.Close and self.key != 'Sair':
                 janela_inicial.Hide()
                 self.telaAmostragem(self.key)
                 janela_inicial.UnHide()
@@ -115,7 +115,7 @@ class projetoFuncionarios:
             # Lendo valores e keys
             key, value = janelaAdicionar.read()
 
-            if key == sg.WINDOW_CLOSED or key == 'Voltar' or self.key == 'Sair' or self.key == sg.WINDOW_CLOSED:
+            if key == sg.Window.Close or key == 'Voltar' or self.key == 'Sair' or self.key == sg.Window.Close:
                 # If para fechar janela e voltar a tela inicial
                 janelaAdicionar.close()
                 break
@@ -262,7 +262,7 @@ class projetoFuncionarios:
         janelaAmostragem = sg.Window(f'Perfil de {funcionario}', layoutAmostragem)
         while True:
             key, value = janelaAmostragem.read()
-            if key == sg.WINDOW_CLOSED or key == 'Voltar':
+            if key == sg.Window.Close or key == 'Voltar':
                 janelaAmostragem.close()
                 break
 
@@ -329,7 +329,7 @@ class projetoFuncionarios:
         while True:
             key, value = janelaEdicao.read()
 
-            if key == sg.WINDOW_CLOSED or key == 'Voltar':
+            if key == sg.Window.Close or key == 'Voltar':
                 # Identificando se o usuario gostaria de voltar
                 janelaEdicao.Close()
                 break
@@ -387,7 +387,7 @@ class projetoFuncionarios:
                 while True:
                     # Lendo valores e keys
                     key, value = janelaAlteracao.read()
-                    if key == 'Voltar' or key == sg.WINDOW_CLOSED:
+                    if key == 'Voltar' or key == sg.Window.Close:
                         janelaAlteracao.close()
                         break
                     if key == 'Confirmar':
@@ -422,7 +422,7 @@ class projetoFuncionarios:
                     # Lendo as keys e valores de janelaAlteracaoImagem
                     key, value = janelaAlteracaoImagem.read()
 
-                    if key == 'Voltar' or key == sg.WINDOW_CLOSED:
+                    if key == 'Voltar' or key == sg.Window.Close:
                         # Caso deseje fechar a janela
                         janelaAlteracaoImagem.close()
                         break
